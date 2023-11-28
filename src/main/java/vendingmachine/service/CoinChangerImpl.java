@@ -29,6 +29,31 @@ public class CoinChangerImpl implements CoinChanger {
         return amount >= minAmount && amount % minAmount == 0;
     }
 
+    private EnumMap<Coin, Integer> changeBy(int amount) {
+        EnumMap<Coin, Integer> changeCounts = initChangeCount();
+        while(amount != 0) {
+            int pickCoinAmount = pickCoinAmount();
+            if(canInsert(amount, pickCoinAmount)) {
+                amount -= pickCoinAmount;
+                Coin coin = Coin.getCoin(pickCoinAmount);
+                changeCounts.put(coin, changeCounts.getOrDefault(coin, 0) + 1);
+            }
+        }
+        return changeCounts;
+    }
+
+    private EnumMap<Coin, Integer> initChangeCount() {
+        EnumMap<Coin, Integer> changeCounts = new EnumMap<>(Coin.class);
+        for (Coin coin : Coin.values()) {
+            changeCounts.put(coin, 0);
+        }
+        return changeCounts;
+    }
+
+    private boolean canInsert(int amount, int coin) {
+        return amount >= coin;
+    }
+
     private int pickCoinAmount() {
         return Randoms.pickNumberInList(List.of(
                 Coin.COIN_500.getAmount(),
