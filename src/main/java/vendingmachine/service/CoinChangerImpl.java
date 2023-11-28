@@ -28,4 +28,12 @@ public class CoinChangerImpl implements CoinChanger {
     private boolean canChange(int amount, int minAmount) {
         return amount >= minAmount && amount % minAmount == 0;
     }
+
+    private int pickCoinAmount() {
+        return Randoms.pickNumberInList(List.of(
+                Coin.COIN_500.getAmount(),
+                Coin.COIN_100.getAmount(),
+                Coin.COIN_50.getAmount(),
+                Coin.COIN_10.getAmount()));
+    }
 }
