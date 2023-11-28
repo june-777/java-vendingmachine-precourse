@@ -1,6 +1,7 @@
 package vendingmachine.configuration;
 
 import vendingmachine.controller.Controller;
+import vendingmachine.dto.mapper.VendingMachineMapper;
 import vendingmachine.service.CoinChanger;
 import vendingmachine.service.CoinChangerImpl;
 import vendingmachine.service.VendingService;
@@ -22,7 +23,7 @@ public class ApplicationConfiguration {
     }
 
     private VendingService vendingService() {
-        return new VendingService(coinChangerImpl());
+        return new VendingService(coinChangerImpl(), new VendingMachineMapper());
     }
 
     private CoinChanger coinChangerImpl() {
