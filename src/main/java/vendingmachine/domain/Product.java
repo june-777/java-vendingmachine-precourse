@@ -13,6 +13,18 @@ public class Product {
         this.count = count;
     }
 
+    public boolean isEmpty() {
+        return count == 0;
+    }
+
+    public boolean isLessThanPrice(int price) {
+        return this.price < price;
+    }
+
+    public boolean isDivideByPrice(int price) {
+        return this.price >= price && this.price % price == 0;
+    }
+
     @Override
     public boolean equals(Object o) {
         if (this == o) {
