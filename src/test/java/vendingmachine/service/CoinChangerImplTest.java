@@ -1,14 +1,11 @@
 package vendingmachine.service;
 
-import static org.junit.jupiter.api.Assertions.*;
-
 import org.assertj.core.api.Assertions;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Nested;
-import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.ValueSource;
-import vendingmachine.exception.VenderException;
+import vendingmachine.exception.VendingMachineException;
 
 class CoinChangerImplTest {
 
@@ -23,7 +20,7 @@ class CoinChangerImplTest {
         @ValueSource(ints = {1, 9, 11, 49, 51, 99, 101, 499, 501})
         void cantChange(int amountInput) {
             Assertions.assertThatThrownBy(() -> coinChanger.change(amountInput))
-                    .hasMessage(VenderException.INVALID_AMOUNT.getMessage());
+                    .hasMessage(VendingMachineException.INVALID_AMOUNT.getMessage());
         }
 
         @DisplayName("[Exception] 동전으로 거스름할 수 있는 금액이라면 domain에서 예외가 발생하지 않는다.")

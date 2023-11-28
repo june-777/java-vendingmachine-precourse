@@ -4,7 +4,7 @@ import camp.nextstep.edu.missionutils.Randoms;
 import java.util.EnumMap;
 import java.util.List;
 import vendingmachine.domain.Coin;
-import vendingmachine.exception.VenderException;
+import vendingmachine.exception.VendingMachineException;
 
 /**
  * To Reviewer:
@@ -21,7 +21,7 @@ public class CoinChangerImpl implements CoinChanger {
     private void validateChangeable(int amount) {
         int minAmount = Coin.calculateMinAmount();
         if(!canChange(amount, minAmount)) {
-            throw VenderException.INVALID_AMOUNT.make();
+            throw VendingMachineException.INVALID_AMOUNT.make();
         }
     }
 
