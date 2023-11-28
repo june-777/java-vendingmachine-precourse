@@ -1,9 +1,7 @@
 package vendingmachine.domain;
 
 import java.util.EnumMap;
-import java.util.HashSet;
 import java.util.List;
-import vendingmachine.exception.VendingMachineException;
 
 public class VendingMachine {
 
@@ -13,16 +11,12 @@ public class VendingMachine {
     public VendingMachine(EnumMap<Coin, Integer> coinCounts, List<Product> products) {
         this.coinCounts = coinCounts;
         this.products = products;
-        validate();
     }
 
-    private void validate() {
-        HashSet<Product> uniqueProducts = new HashSet<>(products);
-
-        if (products.size() != uniqueProducts.size()) {
-            throw VendingMachineException.DUPLICATE_PRODUCT.make();
-        }
+    public void place() {
+        VendingMachineValidator.validate(products);
     }
+
 
     @Override
     public String toString() {
