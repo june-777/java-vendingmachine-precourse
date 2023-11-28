@@ -22,8 +22,6 @@ public class FormValidator {
             List<String> product = Arrays.asList(productInfo.split(ELEMENT_FORM_REGEX));
             String price = product.get(1);
             String count = product.get(2);
-            System.out.println("price = " + price);
-            System.out.println("count = " + count);
             NumberValidator.validate(price);
             NumberValidator.validate(count);
         }
@@ -76,12 +74,11 @@ public class FormValidator {
 
     // [상품명,가격,수량] 폼을 검증한다.
     private static void validateElementForm(String target) {
-        System.out.println("target = " + target);
-        if(!target.startsWith("[")) {
-            throw new IllegalArgumentException("상품 정보는 [ 로 시작해야 합니다.");
+        if (!target.startsWith("[")) {
+            throw new IllegalArgumentException("[ERROR] 상품 정보는 [ 로 시작해야 합니다.");
         }
-        if(!target.endsWith("]")) {
-            throw new IllegalArgumentException("상품 정보는 ] 로 끝나야 합니다.");
+        if (!target.endsWith("]")) {
+            throw new IllegalArgumentException("[ERROR] 상품 정보는 ] 로 끝나야 합니다.");
         }
         String product = removeSquareBrackets(target);
         validateStartWithSeparator(product, ELEMENT_FORM_REGEX);
@@ -93,7 +90,7 @@ public class FormValidator {
     private static void validateSeparatorCount(String target) {
         int count = calculateSeparatorCount(target);
 
-        if(count != 2) {
+        if (count != 2) {
             InputException.WRONG_COUNT_SEPARATOR.make();
         }
     }
