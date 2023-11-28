@@ -23,10 +23,22 @@ public class InputView {
         return productsInput;
     }
 
+    public int readPutAmount() {
+        System.out.println();
+        System.out.println(Message.PUT_AMOUNT_GUIDE.message);
+        String putAmountInput = Console.readLine().trim();
+        NumberValidator.validate(putAmountInput);
+
+        return Integer.parseInt(putAmountInput);
+    }
+
     private enum Message {
         //TODO
         VENDER_AMOUNT("자판기가 보유하고 있는 금액을 입력해 주세요."),
-        VENDING_PRODUCT("상품명과 가격, 수량을 입력해 주세요.");
+        VENDING_PRODUCT("상품명과 가격, 수량을 입력해 주세요."),
+        PUT_AMOUNT_GUIDE("투입 금액을 입력해 주세요."),
+        PUT_AMOUNT("투입 금액: %d원"),
+        BUY_PRODUCT("구매할 상품명을 입력해 주세요.");
 
         private final String message;
 
