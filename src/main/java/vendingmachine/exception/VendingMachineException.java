@@ -2,7 +2,10 @@ package vendingmachine.exception;
 
 public enum VendingMachineException {
     INVALID_AMOUNT("보유 금액으로 동전을 생성할 수 없습니다."),
-    DUPLICATE_PRODUCT("중복된 상품이 존재합니다.");
+    DUPLICATE_PRODUCT("중복된 상품이 존재합니다."),
+    INVALID_PRODUCT_COUNT("상품 등록 시, 상품의 개수는 1개 이상이어야 합니다."),
+    INVALID_PRODUCT_MIN_PRICE("상품 등록 시, 상품 가격은 100원부터 시작해야 합니다."),
+    INVALID_PRODUCT_PRICE_UNIT("상품 등록 시, 상품 가격은 10원으로 나누어 떨어져야 합니다.");
 
     private static final String PREFIX = "[ERROR] ";
     private final String message;
