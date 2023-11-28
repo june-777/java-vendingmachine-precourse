@@ -32,6 +32,13 @@ public class InputView {
         return Integer.parseInt(putAmountInput);
     }
 
+    public String readBuyProduct(int amount) {
+        System.out.println();
+        System.out.printf(Message.PUT_AMOUNT.message, amount);
+        System.out.println();
+        return Console.readLine().trim();
+    }
+
     private enum Message {
         //TODO
         VENDER_AMOUNT("자판기가 보유하고 있는 금액을 입력해 주세요."),
