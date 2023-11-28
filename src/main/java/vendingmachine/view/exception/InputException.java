@@ -8,6 +8,7 @@ public enum InputException {
     START_WITH_SEPARATOR("구분자는 맨 처음에 있으면 안됩니다."),
     END_WITH_SEPARATOR("구분자는 맨 끝에 있으면 안됩니다."),
     CONTINUOUS_SEPARATOR("구분자는 연속되선 안됩니다."),
+    WRONG_COUNT_SEPARATOR("구분자의 개수가 잘못 되었습니다."),
 
     EXCEED_LENGTH("제한된 입력 길이를 초과했습니다.");
     private static final String PREFIX = "[ERROR] ";
